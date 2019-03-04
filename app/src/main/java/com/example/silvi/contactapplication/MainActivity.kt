@@ -12,6 +12,9 @@ import kotlinx.android.synthetic.main.activity_view_contact.*
 import kotlinx.android.synthetic.main.activity_view_contact.view.*
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.AdapterView.OnItemClickListener
+
+
 
 
 
@@ -30,7 +33,7 @@ internal class MainActivity : AppCompatActivity() {
         glm = GridLayoutManager(this,1)
         contactsList.layoutManager=glm
 
-        val adapter = ContactAdapter(ContactApplication.contacts)
+        val adapter = ContactAdapter(this@MainActivity,ContactApplication.contacts)
         allContacts.adapter = adapter
 
         //Crear un nuevo contacto
@@ -41,7 +44,7 @@ internal class MainActivity : AppCompatActivity() {
 
         }
 
-       
+
 
 
 

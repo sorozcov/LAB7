@@ -43,8 +43,8 @@
             android:layout_height="310dp"
             android:scrollbars="vertical"
             android:id="@+id/allContacts"
-            android:layout_marginTop="50dp" app:layout_constraintTop_toBottomOf="@+id/textView"
-            android:layout_marginBottom="20dp" app:layout_constraintBottom_toTopOf="@+id/newContact"
+            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_marginBottom="30dp" app:layout_constraintBottom_toTopOf="@+id/newContact"
             app:layout_constraintVertical_bias="0.0" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"/>
