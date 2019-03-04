@@ -38,7 +38,7 @@ class ContactAdapter(var context: Context,private val data: ArrayList<Contact>) 
             ContactApplication.id=position;
             val intent: Intent = Intent(context, ViewContact()::class.java)
             context.startActivity(intent)
-            context.finish()
+           
         }
     }
 
