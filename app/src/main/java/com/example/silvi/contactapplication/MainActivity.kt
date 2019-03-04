@@ -10,8 +10,15 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_view_contact.*
 import kotlinx.android.synthetic.main.activity_view_contact.view.*
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
+
+
 
 internal class MainActivity : AppCompatActivity() {
+    lateinit var  contactsList: RecyclerView
+    lateinit var  glm: GridLayoutManager
+    lateinit var  adapter: ContactAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +26,11 @@ internal class MainActivity : AppCompatActivity() {
 
 
         //Crear un link entre el listview y el adapter
-        val adapter = ArrayAdapter<Contact>(this, R.layout.listviews, ContactApplication.contacts)
+        contactsList = findViewById(R.id.allContacts);
+        glm = GridLayoutManager(this,1)
+        contactsList.layoutManager=glm
+
+        val adapter = ContactAdapter(ContactApplication.contacts)
         allContacts.adapter = adapter
 
         //Crear un nuevo contacto
@@ -30,34 +41,7 @@ internal class MainActivity : AppCompatActivity() {
 
         }
 
-        //Ver el contacto seleccionado
-        allContacts.setOnItemClickListener { parent, view, position, id ->
-            ContactApplication.contactSelected=(ContactApplication.contacts.get(position));
-            ContactApplication.id=position;
-            val intent: Intent = Intent(this, ViewContact()::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        allContacts.isLongClickable = true
-        //Agrega elementos en long click
-        allContacts.setOnItemLongClickListener(object : AdapterView.OnItemLongClickListener {
-
-            override fun onItemLongClick(
-                arg0: AdapterView<*>, v: View,
-                index: Int, arg3: Long
-            ): Boolean {
-                //Elimina solo un elemento
-                Toast.makeText(
-                    this@MainActivity,
-                    "Contacto ha sido eliminado: ${ContactApplication.contacts.get(index)}",
-                    Toast.LENGTH_SHORT
-                ).show();
-                ContactApplication.contacts.removeAt(index)
-                adapter.notifyDataSetChanged()
-                return false
-            }
-        })
+       
 
 
 

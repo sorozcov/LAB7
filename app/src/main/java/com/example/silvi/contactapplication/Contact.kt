@@ -8,5 +8,14 @@ class Contact(var name: String, var phone: String, var email: String,var  image:
     override fun toString(): String {
         return " $name  $phone"
     }
+    fun getContactImage():Bitmap{
+        return image
+    }
 
+    fun getContactName():String{
+        return name
+    }
+    fun getContactPhone():String{
+        return phone
+    }
     }
